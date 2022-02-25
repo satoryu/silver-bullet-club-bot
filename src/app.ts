@@ -1,4 +1,6 @@
-const { App } = require('@slack/bolt')
+import { App, GenericMessageEvent, MessageEvent } from '@slack/bolt'
+
+const isGenericMessageEvent = (message: MessageEvent): message is GenericMessageEvent => (message as GenericMessageEvent).subtype === undefined
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -6,6 +8,8 @@ const app = new App({
 });
 
 app.message('hello', async ({ message, say }) => {
+  if (!isGenericMessageEvent(message)) return;
+
   await say({
     blocks: [
       {
