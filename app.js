@@ -1,8 +1,10 @@
 const { App } = require('@slack/bolt')
 
+const config = require('./config')
+
 const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET
+  token: config.slack.botToken,
+  signingSecret: config.slack.signingSecret
 });
 
 app.message('hello', async ({ message, say }) => {
