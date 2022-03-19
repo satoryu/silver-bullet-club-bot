@@ -5,7 +5,8 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc -p .",
-    "start": "npm run build && node dist/app.js",
+    "dev:start" : "npm run build && npm run start",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
